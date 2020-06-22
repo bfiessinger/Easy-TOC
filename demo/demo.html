@@ -6,25 +6,119 @@
 	<title>Document</title>
 </head>
 <body>
-	<div class="toc-wrapper"></div>
-	<h1>1: H1</h1>
-	<h1>1: H1</h1>
-	<h1>1: H1</h1>
-	<h1>1: H1</h1>
-	<h2>2: H2</h2>
-	<h3>3: H3</h3>
-	<h4>4: h4</h4>
-	<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-	<h2>5: H2</h2>
+
+	<div class="toc-wrapper">
+		<div class="toc-header">Table of Contents</div>
+	</div>
+	<h1>Easy TOC</h1>
+	<p>Simple and lightweight Table of contents.</p>
+	<p>Easy TOC runs without any dependecies and is only 3.44KB and 1.37KB gzipped</p>
+	<h2>Usage</h2>
 	<pre>
 		<code class="javascript">
-// TBC
+	let my_toc = new easy_toc( document.querySelector('.my-toc-wrapper'), {
+		include: [
+			'h1',
+			'h2',
+			'h3',
+			'h4',
+			'h5',
+			'h6'
+		],
+		exclude: [
+			'[data-no-toc]'
+		],
+		prefix: 'easy_toc_',
+		hierarchical: true,
+		anchor_nodename: 'div',
+		anchor_class: 'anchor'
+	} );
+	my_toc.init();
 		</code>
 	</pre>
-	<h2>6: H2</h2>
-	<p>Est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-	<h3>7: H3</h3>
+	<h3>Options</h3>
+	<dl class="options">
+		<dt>include</dt>
+		<dd>
+			Type: <code>Array</code><br>
+			Default: <code>['h1', 'h2', 'h3', 'h4', 'h5', 'h6']</code>
+			<p>
+				Query Selectors to include in table of contents
+			</p>
+		</dd>
+		<dt>exclude</dt>
+		<dd>
+			Type: <code>Array</code><br>
+			Default: <code>['[data-no-toc]']</code>
+			<p>
+				Query Selectors to exclude from table of contents
+			</p>
+		</dd>
+		<dt>prefix</dt>
+		<dd>
+			Type: <code>string</code><br>
+			Default: <code>easy_toc_</code>
+			<p>
+				a prefix to use in classes, id's and anchors
+			</p>
+		</dd>
+		<dt>hierarchical</dt>
+		<dd>
+			Type: <code>boolean</code><br>
+			Default: <code>true</code>
+			<p>
+				whether or not create a hierarchical structure
+			</p>
+		</dd>
+		<dt>anchor_tagname</dt>
+		<dd>
+			Type: <code>string</code><br>
+			Default: <code>div</code>
+			<p>
+				tagname for the wrapper around the heading
+			</p>
+		</dd>
+		<dt>anchor_class</dt>
+		<dd>
+			Type: <code>string</code><br>
+			Default: <code>anchor</code>
+			<p>
+				Classname for TOC anchortags
+			</p>
+		</dd>
+	</dl>
+	<h3>Methods</h3>
+	<h4><code>init()</code></h4>
+	<pre>
+		<code class="javascript">
+	// Init
+	my_toc.init();
+		</code>
+	</pre>
+	<h4><code>update()</code></h4>
+	<pre>
+		<code class="javascript">
+	// Basically just an alias for init()
+	my_toc.update();
+		</code>
+	</pre>
+	<h4><code>destroy()</code></h4>
+	<pre>
+		<code class="javascript">
+	// Destroy the current TOC
+	my_toc.destroy();
+		</code>
+	</pre>
+	<h3>Exclude Headings</h3>
+	<h4 data-no-toc>This Heading will be excluded</h4>
+	<p>You can exclude headings with <code>data-no-toc</code> or whatever is specified in <code>settings.exclude</code></p>
+	<h2>Demo Heading H2</h2>
 	<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+	<h2>Demo Heading H2</h2>
+	<p>Headings with the same content still work. A counter will update the slug for the specific Heading</p>
+	<h3>Demo Heading H3</h3>
+	<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+	
 </body>
 </html>
 
