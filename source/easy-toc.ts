@@ -270,6 +270,10 @@ class easy_toc {
 				
 				cur_hierarchical_toc_list.appendChild(toc_list_item);
 
+			} else if ( this.settings.hierarchical && prev_heading_level !== null && prev_heading_level == s.heading_level ) {
+
+				cur_hierarchical_toc_list.appendChild(toc_list_item);
+
 			} else {
 
 				// Reset hierarchical List Starting point
